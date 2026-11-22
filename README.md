@@ -51,15 +51,20 @@ To keep the markup DRY (Don't Repeat Yourself), I established a modular template
    - `index.html`: Starting page featuring my personalized welcome hero section and latest posts grid.
    - `all-posts.html`: Archive page showing all posts with responsive grid columns.
    - `post-detail.html`: Article reading page with back navigation, author metadata, lead excerpt, formatted content paragraphs, and tag badges.
+   - `404.html`: Custom error page extending `base.html` that Django automatically serves when an unknown URL or invalid post slug is encountered.
 
-### 5. Scoped CSS Architecture & Full Dark Theme
+### 5. Scoped CSS Architecture, Editorial Typography & Atmospheric Dark Theme
 Instead of using messy inline styles or utility clutter in the HTML, I extracted all styling into dedicated, modular stylesheets under `blog/static/blog/`:
-- `app.css`: Design tokens, reset, typography, sticky navigation bar, and footer.
-- `post.css`: Card layout, category badges, author avatar, hover transitions, and read-more actions.
-- `index.css`: Welcome hero container, circular profile photo, and latest posts layout.
+- `app.css`: Design tokens, reset, typography, sticky navigation bar, and footer with custom atmospheric background images and frosted glass effects.
+- `post.css`: Glassmorphic card styling, category badges, author avatar, hover lift animations, and read-more actions.
+- `index.css`: Welcome hero container, circular glowing profile photo, and latest posts layout.
 - `all-posts.css`: Header and responsive grid layout for the all-posts page.
-- `post-detail.css`: Typography, reading column constraints, lead styling, and tag layout for article pages.
-- **Theme:** Applied a cohesive Full Dark Theme utilizing deep slate backgrounds (`#0f172a`), elevated card surfaces (`#1e293b`), crisp text (`#f8fafc`), and vibrant blue accents (`#3b82f6` / `#60a5fa`).
+- `post-detail.css`: Reading column constraints, lead styling, tag layout, and glassmorphic card container for article pages.
+- `404.css`: Centered glassmorphic error card, large gradient numeral typography, responsive layout, and action navigation buttons.
+- **Visual Design & Typography:** Instead of a flat background color, I gave the entire site a unique visual identity:
+  - **Body Background:** Implemented high-resolution dark abstract 3D artwork from Unsplash (`photo-1618005182384-a83a8bd57fbe`) with a fixed attachment and subtle radial gradient overlay.
+  - **Header & Footer Backgrounds:** Styled `#main-navigation` with dark textured imagery (`photo-1509023464722-18d996393ca8`) and `#main-footer` with atmospheric cosmic imagery (`photo-1519681393784-d120267933ba`), both layered under gradient overlays and frosted glass (`backdrop-filter: blur(...)`).
+  - **Editorial Blog Typography:** Imported Google Fonts pairing `Playfair Display` (serif) for titles, headings, and branding with `Plus Jakarta Sans` (sans-serif) for clean readability.
 
 ### 6. Static File Serving Configuration
 To ensure static files serve smoothly in local development across all sub-routes:
@@ -88,7 +93,8 @@ blog-post-project-django/
 │   │       ├── post.css         # Reusable post card styles
 │   │       ├── index.css        # Home page hero and latest posts styles
 │   │       ├── all-posts.css    # All posts grid styles
-│   │       └── post-detail.css  # Article detail view styles
+│   │       ├── post-detail.css  # Article detail view styles
+│   │       └── 404.css          # 404 error page styles
 │   └── templates/
 │       └── blog/
 │           ├── index.html       # Starting/landing page template
@@ -97,7 +103,8 @@ blog-post-project-django/
 │           └── includes/
 │               └── post.html    # Reusable post card partial
 ├── templates/                   # Global templates
-│   └── base.html                # Master layout with navbar & footer
+│   ├── base.html                # Master layout with navbar & footer
+│   └── 404.html                 # Global 404 error template
 └── README.md
 ```
 

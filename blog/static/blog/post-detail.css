@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Post Detail Page Styles (Full Dark Theme)
+   Post Detail Page Styles (Editorial Typography & Glassmorphism)
    ========================================================================== */
 
 #post-detail-section {
-  background-color: #0f172a;
+  background: transparent;
   padding: 3rem 1rem 5rem 1rem;
   min-height: calc(100vh - 12rem);
 }
@@ -22,6 +22,7 @@
   text-decoration: none;
   margin-bottom: 2rem;
   transition: color 0.15s ease, transform 0.15s ease;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .back-link:hover {
@@ -37,11 +38,13 @@
 }
 
 .article-wrapper {
-  background-color: #1e293b;
-  border: 1px solid #334155;
+  background-color: rgba(30, 41, 59, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(51, 65, 85, 0.8);
   border-radius: 0.75rem;
   padding: 2.5rem 1.75rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 768px) {
@@ -53,7 +56,7 @@
 .article-header {
   margin-bottom: 2.5rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.7);
 }
 
 .article-meta {
@@ -78,17 +81,19 @@
 }
 
 .article-title {
-  font-size: 2rem;
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
   font-weight: 800;
-  letter-spacing: -0.025em;
-  line-height: 1.25;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
   color: #f8fafc;
   margin-bottom: 1.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 @media (min-width: 768px) {
   .article-title {
-    font-size: 2.6rem;
+    font-size: 2.85rem;
   }
 }
 
@@ -112,8 +117,9 @@
 }
 
 .article-author-name {
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
   color: #f8fafc;
 }
 
@@ -126,12 +132,14 @@
 .article-content {
   color: #cbd5e1;
   font-size: 1.0625rem;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 .article-lead {
-  font-size: 1.2rem;
-  line-height: 1.65;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.6;
   color: #e2e8f0;
   font-weight: 400;
   margin-bottom: 2rem;
@@ -148,7 +156,7 @@
 .article-footer {
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid #334155;
+  border-top: 1px solid rgba(51, 65, 85, 0.7);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -163,8 +171,8 @@
 }
 
 .article-tag {
-  background-color: #0f172a;
-  border: 1px solid #334155;
+  background-color: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(51, 65, 85, 0.7);
   color: #94a3b8;
   font-size: 0.8125rem;
   padding: 0.25rem 0.75rem;
