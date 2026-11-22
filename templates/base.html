@@ -6,25 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Dhruba's Blog{% endblock %}</title>
   
-  <!-- Flowbite & Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-  
-  <!-- Blog App CSS -->
+  <!-- Global App Styles -->
   <link rel="stylesheet" href="{% static 'blog/app.css' %}">
+  
+  <!-- Page-specific CSS Files -->
   {% block css_files %}{% endblock %}
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen flex flex-col">
-  <header>
-    <nav class="bg-white border-b border-gray-200 px-4 lg:px-6 py-3.5 dark:bg-gray-800 dark:border-gray-700 shadow-sm">
-      <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-        <a href="{% url 'starting-page' %}" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <span class="self-center text-xl font-bold whitespace-nowrap text-blue-600 dark:text-blue-500">
-            Dhruba's Blog
-          </span>
+<body class="site-body">
+  <header id="main-navigation">
+    <nav class="nav-bar">
+      <div class="nav-container">
+        <a href="{% url 'starting-page' %}" class="nav-brand">
+          <span>Dhruba's Blog</span>
         </a>
-        <div class="flex items-center">
-          <a href="{% url 'posts-page' %}" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-white font-medium rounded-lg text-sm px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+        <div class="nav-actions">
+          <a href="{% url 'posts-page' %}" class="nav-link">
             All posts
           </a>
         </div>
@@ -32,15 +28,13 @@
     </nav>
   </header>
 
-  <main class="flex-grow">
+  <main class="main-content">
     {% block content %}
     {% endblock %}
   </main>
 
-  <footer class="p-4 bg-white md:p-6 lg:p-8 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 dark:text-gray-400">
-    <p>&copy; 2026 Dhruba's Blog. Built with Flowbite Publisher UI.</p>
+  <footer id="main-footer">
+    <p>&copy; 2026 Dhruba's Blog. Built with Django.</p>
   </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>

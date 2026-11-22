@@ -1,0 +1,68 @@
+/* ==========================================================================
+   All Posts Page Styles (Dark Theme)
+   ========================================================================== */
+
+#all-posts {
+  background-color: #0f172a;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  min-height: calc(100vh - 12rem);
+}
+
+.all-posts-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.all-posts-header {
+  max-width: 640px;
+  margin: 0 auto 2.5rem auto;
+  text-align: center;
+}
+
+.all-posts-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #f8fafc;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .all-posts-title {
+    font-size: 2.25rem;
+  }
+}
+
+.all-posts-description {
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.all-posts-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .all-posts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .all-posts-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.no-posts {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #94a3b8;
+  padding: 2rem 0;
+}

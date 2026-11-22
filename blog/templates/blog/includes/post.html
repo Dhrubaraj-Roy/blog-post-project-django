@@ -1,0 +1,35 @@
+{% load static %}
+<article class="post-card">
+  <div class="post-card-body">
+    <div class="post-meta">
+      <span class="post-badge">
+        {{ post.category|default:"Tutorial" }}
+      </span>
+      <span class="post-date">{{ post.date|default:"Nov 20, 2026" }}</span>
+    </div>
+    <h3 class="post-title">
+      <a href="{% if post.slug %}{% url 'post-detail-page' post.slug %}{% else %}#{% endif %}">
+        {{ post.title }}
+      </a>
+    </h3>
+    <p class="post-excerpt">
+      {{ post.excerpt }}
+    </p>
+  </div>
+  <div class="post-footer">
+    <div class="post-author">
+      <img class="post-author-img" 
+           src="https://media.licdn.com/dms/image/v2/C4D03AQGZEqBoKvU-Yw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1655829974178?e=1796860800&v=beta&t=ZO_erEdoWehD5M0w06mc38Leynvir4scAg6lHevbKoA" 
+           alt="{{ post.author|default:'Dhruba' }}">
+      <span class="post-author-name">
+        {{ post.author|default:"Dhruba" }}
+      </span>
+    </div>
+    <a href="{% if post.slug %}{% url 'post-detail-page' post.slug %}{% else %}#{% endif %}" class="post-read-more">
+      Read more
+      <svg class="post-read-more-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+      </svg>
+    </a>
+  </div>
+</article>

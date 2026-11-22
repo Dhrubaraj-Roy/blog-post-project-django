@@ -5,141 +5,48 @@
   Dhruba's Blog - Home
 {% endblock %}
 
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'blog/post.css' %}">
+  <link rel="stylesheet" href="{% static 'blog/index.css' %}">
+{% endblock %}
+
 {% block content %}
-  <!-- Flowbite Publisher Hero Section -->
-  <section class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-    <div class="py-12 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-      <div class="flex justify-center mb-6">
-        <img class="w-32 h-32 md:w-40 md:h-40 rounded-full shadow-xl border-4 border-blue-600 dark:border-blue-500 object-cover"
+  <!-- Welcome / Hero Section -->
+  <section id="welcome">
+    <div class="welcome-container">
+      <div class="welcome-avatar-wrapper">
+        <img class="welcome-avatar"
              src="https://media.licdn.com/dms/image/v2/C4D03AQGZEqBoKvU-Yw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1655829974178?e=1796860800&v=beta&t=ZO_erEdoWehD5M0w06mc38Leynvir4scAg6lHevbKoA"
              alt="Dhruba">
       </div>
-      <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-        Welcome to <span class="text-blue-600 dark:text-blue-500">Dhruba's Blog</span>
+      <h1 class="welcome-title">
+        Welcome to <span class="welcome-title-highlight">Dhruba's Blog</span>
       </h1>
-      <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
+      <p class="welcome-subtitle">
         Articles, tutorials, and practical insights on Python, Django web development, and modern software engineering.
       </p>
     </div>
   </section>
 
-  <!-- Flowbite Publisher Blog Section -->
-  <section class="bg-gray-50 dark:bg-gray-900 py-12 lg:py-16">
-    <div class="px-4 mx-auto max-w-screen-xl lg:px-6">
-      <div class="flex justify-between items-center mb-8">
-        <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+  <!-- Latest Posts Section -->
+  <section id="latest-posts">
+    <div class="latest-posts-container">
+      <div class="latest-posts-header">
+        <h2 class="latest-posts-title">
           Latest Posts
         </h2>
-        <a href="{% url 'posts-page' %}" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:underline dark:text-blue-500">
+        <a href="{% url 'posts-page' %}" class="view-all-link">
           View all posts
-          <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <svg class="view-all-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
           </svg>
         </a>
       </div>
 
-      <div class="grid gap-8 lg:grid-cols-3">
-        <!-- Post 1 -->
-        <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between hover:shadow-md transition">
-          <div>
-            <div class="flex justify-between items-center mb-4 text-gray-500">
-              <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
-                Tutorial
-              </span>
-              <span class="text-sm">Nov 18, 2026</span>
-            </div>
-            <h3 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-500">
-              <a href="#">Getting Started with Django: The Foundations</a>
-            </h3>
-            <p class="mb-4 font-normal text-gray-500 dark:text-gray-400 text-sm">
-              Explore Django's MVT pattern, project initialization, settings management, and how to structure apps cleanly.
-            </p>
-          </div>
-          <div class="flex justify-between items-center pt-4 border-t border-gray-100 dark:border-gray-700">
-            <div class="flex items-center space-x-3">
-              <img class="w-7 h-7 rounded-full object-cover" 
-                   src="https://media.licdn.com/dms/image/v2/C4D03AQGZEqBoKvU-Yw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1655829974178?e=1796860800&v=beta&t=ZO_erEdoWehD5M0w06mc38Leynvir4scAg6lHevbKoA" 
-                   alt="Dhruba">
-              <span class="font-medium text-sm dark:text-white">
-                Dhruba
-              </span>
-            </div>
-            <a href="#" class="inline-flex items-center font-medium text-sm text-blue-600 dark:text-blue-500 hover:underline">
-              Read more
-              <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- Post 2 -->
-        <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between hover:shadow-md transition">
-          <div>
-            <div class="flex justify-between items-center mb-4 text-gray-500">
-              <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-800">
-                Architecture
-              </span>
-              <span class="text-sm">Nov 15, 2026</span>
-            </div>
-            <h3 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-500">
-              <a href="#">Mastering URLs, Slugs and Dynamic Routing</a>
-            </h3>
-            <p class="mb-4 font-normal text-gray-500 dark:text-gray-400 text-sm">
-              How Django path converters work, transforming slugs into model queries, and building SEO-friendly URL patterns.
-            </p>
-          </div>
-          <div class="flex justify-between items-center pt-4 border-t border-gray-100 dark:border-gray-700">
-            <div class="flex items-center space-x-3">
-              <img class="w-7 h-7 rounded-full object-cover" 
-                   src="https://media.licdn.com/dms/image/v2/C4D03AQGZEqBoKvU-Yw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1655829974178?e=1796860800&v=beta&t=ZO_erEdoWehD5M0w06mc38Leynvir4scAg6lHevbKoA" 
-                   alt="Dhruba">
-              <span class="font-medium text-sm dark:text-white">
-                Dhruba
-              </span>
-            </div>
-            <a href="#" class="inline-flex items-center font-medium text-sm text-blue-600 dark:text-blue-500 hover:underline">
-              Read more
-              <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- Post 3 -->
-        <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between hover:shadow-md transition">
-          <div>
-            <div class="flex justify-between items-center mb-4 text-gray-500">
-              <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-purple-200 dark:text-purple-800">
-                Design &amp; UI
-              </span>
-              <span class="text-sm">Nov 10, 2026</span>
-            </div>
-            <h3 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-500">
-              <a href="#">Building Sleek UIs with Flowbite Publisher</a>
-            </h3>
-            <p class="mb-4 font-normal text-gray-500 dark:text-gray-400 text-sm">
-              Integrating Flowbite Publisher blocks into Django templates with responsive layouts, dark mode, and typography.
-            </p>
-          </div>
-          <div class="flex justify-between items-center pt-4 border-t border-gray-100 dark:border-gray-700">
-            <div class="flex items-center space-x-3">
-              <img class="w-7 h-7 rounded-full object-cover" 
-                   src="https://media.licdn.com/dms/image/v2/C4D03AQGZEqBoKvU-Yw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1655829974178?e=1796860800&v=beta&t=ZO_erEdoWehD5M0w06mc38Leynvir4scAg6lHevbKoA" 
-                   alt="Dhruba">
-              <span class="font-medium text-sm dark:text-white">
-                Dhruba
-              </span>
-            </div>
-            <a href="#" class="inline-flex items-center font-medium text-sm text-blue-600 dark:text-blue-500 hover:underline">
-              Read more
-              <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
+      <div class="latest-posts-grid">
+        {% for post in posts %}
+          {% include "blog/includes/post.html" %}
+        {% endfor %}
       </div>
     </div>
   </section>
