@@ -1,0 +1,34 @@
+# Python bytecode & caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Django / Database files
+*.sqlite3
+*.sqlite3-journal
+*.db
+db.sqlite3
+local_settings.py
+staticfiles/
+media/
+
+# Environment variables
+.env
+.env.*
+
+# Logs & test/coverage artifacts
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS & Editor files
+.DS_Store
+.vscode/
+.idea/
