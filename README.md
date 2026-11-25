@@ -32,12 +32,18 @@ Instead of dumping all routing into the root configuration, I decoupled the rout
   2. `"posts"` (named `posts-page`) — The archive page for all published posts.
   3. `"posts/<slug:slug>"` (named `post-detail-page`) — A dynamic route utilizing Django's built-in `slug` path converter to display individual post articles cleanly.
 
-### 3. View Logic & Dynamic Dummy Data
-In `blog/views.py`, I structured the view logic and mock data:
-- Defined an `all_posts` data structure containing post slugs, titles, authors, categories, dates, excerpts, full body paragraphs, and hashtags.
-- `starting_page(request)`: Slices and passes the latest 3 posts to `blog/index.html`.
-- `posts(request)`: Passes all posts to `blog/all-posts.html`.
-- `post_detail(request, slug)`: Dynamically searches `all_posts` by matching the requested `slug`. If the slug is invalid or not found, it cleanly raises an `Http404` exception.
+### 3. Database Models, Admin & View Logic
+In `blog/models.py`, I replaced the static dummy data with relational Django models backed by SQLite:
+- **`Author`**: Stores `first_name`, `last_name`, and `email_address`.
+- **`Tag`**: Stores unique tag `name` values.
+- **`Post`**: Stores `title`, `excerpt`, `category`, `date`, `slug`, and `content`, linked to `Author` via a `ForeignKey` (`related_name="posts"`) and to `Tag` via a `ManyToManyField`.
+
+In `blog/admin.py`, I registered `Post`, `Author`, and `Tag` with `list_display`, `list_filter` on `PostAdmin`, and `prepopulated_fields` so `slug` auto-populates from `title`.
+
+In `blog/views.py`, the views query the database directly:
+- `starting_page(request)`: Queries the latest 3 `Post` records ordered by `-date`, `-id` and passes them to `blog/index.html`.
+- `posts(request)`: Queries all `Post` records ordered by `-date`, `-id` and passes them to `blog/all-posts.html`.
+- `post_detail(request, slug)`: Fetches a single `Post` by `slug` with `get_object_or_404` (raising 404 if not found) and passes both `post` and `post_tags` to `blog/post-detail.html`.
 
 ### 4. Template Architecture & Reusable Partials (DRY)
 To keep the markup DRY (Don't Repeat Yourself), I established a modular template system:
@@ -50,7 +56,7 @@ To keep the markup DRY (Don't Repeat Yourself), I established a modular template
 3. **Dedicated Page Templates:**
    - `index.html`: Starting page featuring my personalized welcome hero section and latest posts grid.
    - `all-posts.html`: Archive page showing all posts with responsive grid columns.
-   - `post-detail.html`: Article reading page with back navigation, author metadata, lead excerpt, formatted content paragraphs, and tag badges.
+   - `post-detail.html`: Article reading page with back navigation, clickable `mailto:` author link, lead excerpt, formatted content paragraphs, and `post_tags` badges.
    - `404.html`: Custom error page extending `base.html` that Django automatically serves when an unknown URL or invalid post slug is encountered.
 
 ### 5. Scoped CSS Architecture, Editorial Typography & Atmospheric Dark Theme
@@ -84,9 +90,12 @@ blog-post-project-django/
 │   ├── wsgi.py
 │   └── asgi.py
 ├── blog/                        # Blog application
+│   ├── migrations/              # Database migrations
+│   ├── admin.py                 # Admin panel config (list_display, list_filter, prepopulated_fields)
+│   ├── models.py                # Database models (Author, Tag, Post)
+│   ├── tests.py                 # Unit tests for models and views
 │   ├── urls.py                  # App-level routes (starting-page, posts, post-detail)
 │   ├── views.py                 # Views (starting_page, posts, post_detail)
-│   ├── models.py                # Database models
 │   ├── static/
 │   │   └── blog/                # Dedicated scoped stylesheets
 │   │       ├── app.css          # Global theme, navbar, and footer styles
@@ -127,12 +136,17 @@ If you'd like to run this project on your local machine:
 
 3. **Run migrations:**
    ```bash
-   python manage.py migrate
+   python3 manage.py migrate
    ```
 
-4. **Start the development server:**
+4. **Create an admin user (to add authors, tags, and posts at `/admin/`):**
    ```bash
-   python manage.py runserver
+   python3 manage.py createsuperuser
    ```
 
-5. Open your browser and navigate to `http://127.0.0.1:8000/`.
+5. **Start the development server:**
+   ```bash
+   python3 manage.py runserver
+   ```
+
+6. Open your browser and navigate to `http://127.0.0.1:8000/`.

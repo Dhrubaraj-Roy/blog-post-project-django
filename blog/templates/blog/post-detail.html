@@ -33,7 +33,13 @@
                src="https://media.licdn.com/dms/image/v2/C4D03AQGZEqBoKvU-Yw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1655829974178?e=1796860800&v=beta&t=ZO_erEdoWehD5M0w06mc38Leynvir4scAg6lHevbKoA"
                alt="{{ post.author|default:'Dhruba' }}">
           <div class="article-author-info">
-            <span class="article-author-name">{{ post.author|default:"Dhruba" }}</span>
+            <span class="article-author-name">
+              {% if post.author and post.author.email_address %}
+                <a href="mailto:{{ post.author.email_address }}" class="article-author-link">{{ post.author }}</a>
+              {% else %}
+                {{ post.author|default:"Dhruba" }}
+              {% endif %}
+            </span>
             <span class="article-author-role">Software Developer &amp; Author</span>
           </div>
         </div>
@@ -46,10 +52,10 @@
         </div>
       </div>
 
-      {% if post.tags %}
+      {% if post_tags %}
         <footer class="article-footer">
           <div class="article-tags">
-            {% for tag in post.tags %}
+            {% for tag in post_tags %}
               <span class="article-tag">#{{ tag }}</span>
             {% endfor %}
           </div>
